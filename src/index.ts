@@ -15,3 +15,18 @@ async function insertData(firstName:string,lastName:string,email:string,password
     
 }
 // insertData("Veer","Patel","test@1","test1")
+async function getData(email:string) {
+    const res = await prisma.user.findFirst({
+        where:{
+            email:email
+        },
+        select:{
+            id:true,
+            firstName:true,
+            lastName:true,
+        }
+    })
+    console.log(res);
+}
+// getData("test@1")
+

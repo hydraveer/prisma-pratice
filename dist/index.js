@@ -22,4 +22,20 @@ function insertData(firstName, lastName, email, password) {
         console.log(res);
     });
 }
-insertData("Veer", "Patel", "test@1", "test1");
+// insertData("Veer","Patel","test@1","test1")
+function getData(email) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const res = yield prisma.user.findFirst({
+            where: {
+                email: email
+            },
+            select: {
+                id: true,
+                firstName: true,
+                lastName: true,
+            }
+        });
+        console.log(res);
+    });
+}
+getData("test@1");
